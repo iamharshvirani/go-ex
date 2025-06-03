@@ -1,4 +1,4 @@
-package main
+package processing
 
 // You need to process a batch of data, such as sending notifications to a list of users, processing images, or performing independent calculations.
 // Doing these tasks sequentially would be slow.
@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-// Simulate processing a single data item
+// processDataItem simulates processing a single data item.
 func processDataItem(id int, wg *sync.WaitGroup) {
 	defer wg.Done() // Decrement the counter when the goroutine finishes
 
@@ -18,7 +18,8 @@ func processDataItem(id int, wg *sync.WaitGroup) {
 	fmt.Printf("Finished processing item %d.\n", id)
 }
 
-func runProcessItems() {
+// RunProcessItems sets up and processes a batch of data items concurrently.
+func RunProcessItems() {
 	dataItems := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 	var wg sync.WaitGroup // Used to wait for a collection of goroutines to finish
 

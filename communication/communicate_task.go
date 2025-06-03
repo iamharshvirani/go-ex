@@ -1,4 +1,4 @@
-package main
+package communication
 
 // You have a producer of data (e.g., reading from a file, fetching from an API) and one or more consumers that process this data.
 // The producer and consumers operate at different speeds.
@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-// Producer sends numbers to a channel
+// producer sends numbers to a channel
 func producer(dataCh chan<- int, num int) {
 	for i := 0; i < num; i++ {
 		fmt.Printf("Producing %d\n", i)
@@ -19,7 +19,7 @@ func producer(dataCh chan<- int, num int) {
 	fmt.Println("Producer finished")
 }
 
-// Consumer receives numbers from a channel and processes them
+// consumer receives numbers from a channel and processes them
 func consumer(dataCh <-chan int, done chan<- bool, id int) {
 	fmt.Printf("Consumer %d started\n", id)
 	for data := range dataCh { // Receive data from the channel
@@ -30,7 +30,8 @@ func consumer(dataCh <-chan int, done chan<- bool, id int) {
 	done <- true // Signal completion
 }
 
-func runCommunicateTask() {
+// RunCommunicateTask sets up and runs the producer-consumer simulation.
+func RunCommunicateTask() {
 	dataChannel := make(chan int, 5)  // Buffered channel with capacity 5
 	doneChannel := make(chan bool, 2) // Channel to signal consumer completion
 
