@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"go-ex/communication"
 	"go-ex/customcache"
+	"go-ex/hungrygophers"
 	"go-ex/pkg/sharedresource"
 	"go-ex/processing"
 	"go-ex/ratelimiter"
@@ -12,7 +13,7 @@ import (
 func main() {
 	// Hardcoded variable to choose the program to run
 	// Options: "communicate", "process", "sharedresource", "sharedresourcemap", "simplecache", "concurrentcache", "ratelimiter", "taskprocessor"
-	programToRun := "taskprocessor" // You can change this to "process" to test the other part
+	programToRun := "gophersemaphore" // You can change this to "process" to test the other part
 
 	switch programToRun {
 	case "communicate":
@@ -36,9 +37,15 @@ func main() {
 	case "ratelimiter":
 		fmt.Println("Running Rate Limiter Program...")
 		ratelimiter.RunRateLimiter()
+	case "slidingwindowratelimiter":
+		fmt.Println("Running Sliding Window Rate Limiter Program...")
+		ratelimiter.RunSlidingWindowRateLimiter()
 	case "taskprocessor":
 		fmt.Println("Running Task Processor Program...")
 		processing.RunTaskProcessor()
+	case "gophersemaphore":
+		fmt.Println("Running Gopher Semaphore Program...")
+		hungrygophers.RunGopherSemaphore()
 	default:
 		fmt.Println("Invalid program choice. Please choose a valid program")
 	}

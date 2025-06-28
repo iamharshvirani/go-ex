@@ -1,6 +1,7 @@
 package processing
 
-// A basic in-memory task processing system can consist of a channel to act as a task queue and a pool of worker goroutines that read tasks from the channel and execute them.
+// A basic in-memory task processing system can consist of a channel to act as a task queue
+// and a pool of worker goroutines that read tasks from the channel and execute them.
 
 import (
 	"fmt"
