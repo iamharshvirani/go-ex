@@ -1,4 +1,4 @@
-package communication
+package main
 
 // You have a producer of data (e.g., reading from a file, fetching from an API) and one or more consumers that process this data.
 // The producer and consumers operate at different speeds.
@@ -31,7 +31,7 @@ func consumer(dataCh <-chan int, done chan<- bool, id int) {
 }
 
 // RunCommunicateTask sets up and runs the producer-consumer simulation.
-func RunCommunicateTask() {
+func main() {
 	dataChannel := make(chan int, 5)  // Buffered channel with capacity 5
 	doneChannel := make(chan bool, 2) // Channel to signal consumer completion
 

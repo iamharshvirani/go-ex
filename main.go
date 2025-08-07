@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"go-ex/communication"
 	"go-ex/customcache"
 	"go-ex/hungrygophers"
 	"go-ex/pkg/sharedresource"
@@ -16,9 +15,6 @@ func main() {
 	programToRun := "gophersemaphore" // You can change this to "process" to test the other part
 
 	switch programToRun {
-	case "communicate":
-		fmt.Println("Running Communicate Task Program...")
-		communication.RunCommunicateTask()
 	case "process":
 		fmt.Println("Running Process Items Program...")
 		processing.RunProcessItems()
